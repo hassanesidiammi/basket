@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  php:
+    build: .
+    container_name: php_basket
+    volumes:
+      - .:/var/www/basket
+    working_dir: /var/www/basket
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
