@@ -7,7 +7,7 @@ use App\Basket\Product;
 interface OfferInterface
 {
     /**
-     * @param Product[] $items 
+     * @param Product[] $items
      */
     public function apply(array $items): float;
 }

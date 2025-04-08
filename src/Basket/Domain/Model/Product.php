@@ -8,5 +8,6 @@ class Product
         public readonly string $code,
         public readonly string $name,
         public readonly float $price
-    ) {}
+    ) {
+    }
 }

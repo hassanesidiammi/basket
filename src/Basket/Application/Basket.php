@@ -8,7 +8,7 @@ use App\Basket\Service\Delivery\DeliveryRuleInterface;
 class Basket implements BasketInterface
 {
     /**
-     * @var Product[] 
+     * @var Product[]
      */
     private array $items = [];
 
@@ -16,7 +16,8 @@ class Basket implements BasketInterface
         private Catalog $catalog,
         private DeliveryRuleInterface $deliveryRule,
         private array $offers = [],
-    ) {}
+    ) {
+    }
 
     public function add(string $productCode): self
     {
@@ -25,7 +26,7 @@ class Basket implements BasketInterface
     }
 
     /**
-     * @return Product[] 
+     * @return Product[]
      */
     public function getItems(): array
     {
