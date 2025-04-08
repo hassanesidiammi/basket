@@ -1,6 +1,7 @@
 <?php
 
-use App\Basket\Application\Basket;
+use App\Basket\Application\BasketApp;
+use App\Basket\Domain\Model\Basket;
 use App\Basket\Domain\Model\Product;
 use App\Basket\Service\Data\Catalog;
 use App\Basket\Service\Delivery\DeliveryRuleSet;
@@ -16,13 +17,15 @@ class BasketTest extends TestCase
             'G01' => new Product('G01', 'Green Widget', 24.95),
         ]);
 
-        $offers = [new BuyR01GetOneHalfPrice()];
-
-        $basket = new Basket($catalog, new DeliveryRuleSet(), $offers);
-
+        $basket = new Basket($catalog);
         $basket->add('R01')->add('R01')->add('G01');
 
+        $this->assertCount(3, $basket->getItems());
+
+        $offers = [new BuyR01GetOneHalfPrice()];
+        $basketApp = new BasketApp(new DeliveryRuleSet(), $offers);
+
         // (32.95 + 32.95/2 + 24.95) + 2.95
-        $this->assertEquals(77.33, $basket->total());
+        $this->assertEquals(77.33, $basketApp->total($basket));
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Basket\Domain\Model;
 
-class Product
+final class Product
 {
     public function __construct(
         public readonly string $code,
