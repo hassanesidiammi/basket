@@ -8,7 +8,8 @@ PHP_IMAGE := php:8.1-cli
 COMPOSER := composer
 PHPUNIT := ./vendor/bin/phpunit
 PHPSTAN := ./vendor/bin/phpstan
-PHPCS := ./vendor/bin/phpcs
+PHPCS  := ./vendor/bin/phpcs
+PHPCBF := ./vendor/bin/phpcbf
 
 .PHONY: help install tests phpstan phpcs docker-build docker-up docker-down...
 
@@ -24,6 +25,7 @@ help:
 	@echo "  make tests          # Run PHPUnit tests"
 	@echo "  make phpstan        # Analyze code with PHPStan"
 	@echo "  make phpcs          # Check code standards with PHP_CodeSniffer"
+	@echo "  make phpcs-fix      # Check code standards with PHP_CodeSniffer and fix it.."
 
 
 docker-build:
@@ -57,5 +59,9 @@ phpstan:
 phpcs:
 	@echo "Checking code standards with PHP_CodeSniffer..."
 	$(PHPCS) --standard=phpcs.xml $(SRC_DIR)
+
+phpcs-fix:
+	@echo "Fixing code standards with PHP_CodeSniffer..."
+	$(PHPCBF) --standard=phpcs.xml $(SRC_DIR)
 
 
