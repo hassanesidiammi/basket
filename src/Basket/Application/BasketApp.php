@@ -11,7 +11,7 @@ class BasketApp
     /** @param OfferInterface[] $offers */
     public function __construct(
         private DeliveryRuleInterface $delivery,
-        private array $offers = [],
+        private array $offers,
     ) {
     }
 
