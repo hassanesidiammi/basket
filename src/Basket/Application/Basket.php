@@ -2,8 +2,10 @@
 
 namespace App\Basket\Application;
 
+use App\Basket\Domain\Model\Product;
 use App\Basket\Service\Data\Catalog;
 use App\Basket\Service\Delivery\DeliveryRuleInterface;
+use App\Basket\Service\Offers\OfferInterface;
 
 class Basket implements BasketInterface
 {
@@ -12,6 +14,7 @@ class Basket implements BasketInterface
      */
     private array $items = [];
 
+    /** @param OfferInterface[] $offers */
     public function __construct(
         private Catalog $catalog,
         private DeliveryRuleInterface $deliveryRule,

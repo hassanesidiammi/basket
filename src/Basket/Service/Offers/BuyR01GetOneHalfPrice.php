@@ -2,7 +2,7 @@
 
 namespace App\Basket\Service\Offers;
 
-use App\Basket\Product;
+use App\Basket\Domain\Model\Product;
 
 class BuyR01GetOneHalfPrice implements OfferInterface
 {

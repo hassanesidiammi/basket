@@ -6,8 +6,10 @@ use App\Basket\Domain\Model\Product;
 
 class Catalog
 {
+    /** @var Product[] */
     private array $products = [];
 
+    /** @param Product[] $products */
     public function __construct(array $products)
     {
         foreach ($products as $product) {
